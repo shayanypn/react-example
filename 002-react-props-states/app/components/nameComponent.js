@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Todo extends React.Component {
+class Todo extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -12,7 +12,19 @@ export default class Todo extends React.Component {
 		return (
 			<div className="jumbotron">
 				<h1 className="display-3">My name is `{this.props.name}`</h1>
-				<p className="lead">{this.state.text}</p>
+				<p className="lead">{this.props.isShow?this.state.text:''}</p>
 			</div>);
 	}
 }
+Todo.propTypes = {
+   isShow: React.PropTypes.bool.isRequired,
+   name: React.PropTypes.string,
+   // propArray: React.PropTypes.array.isRequired,
+   // propFunc: React.PropTypes.func,
+   // propNumber: React.PropTypes.number,
+   // propObject: React.PropTypes.object
+};
+Todo.defaultProps = {
+	name: 'Alex'
+};
+export default Todo;

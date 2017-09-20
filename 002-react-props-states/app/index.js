@@ -6,10 +6,11 @@ import './styles/app.scss';
 
 class Main extends React.Component {
   render() {
+  	const isShow = true;
     return (
     <div className="container">
     	<div className="col-md-12">
-			<NameComponent name="shayan" />
+			<NameComponent name="shayan" isShow={isShow} />
 		</div>
     </div>);
   }
