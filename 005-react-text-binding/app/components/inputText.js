@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class Todo extends React.Component {
 
@@ -16,7 +17,7 @@ export default class Todo extends React.Component {
 		});
 	}
 	componentDidMount(){
-		this.textInput.focus();
+		ReactDOM.findDOMNode(this.refs.textInput).focus();
 	}
 	render() {
 		return (
@@ -27,7 +28,7 @@ export default class Todo extends React.Component {
 					type="text"
 					className="form-control"
 					placeholder="Type your name ..."
-					ref={(input) => { this.textInput = input; }}
+					ref="textInput"
 					onKeyUp={this.handleKeyPress}
 					/>
 			</div>
