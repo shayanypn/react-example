@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
@@ -19,6 +20,13 @@ class Form extends Component {
 		e.preventDefault();
 
 		this.props.onAddTodo(this.state.task);
+
+		ReactDOM.findDOMNode(this.refs.task).value = '';
+	}
+
+
+	componentDidMount() {
+		ReactDOM.findDOMNode(this.refs.task).focus();		
 	}
 
 	render() {
@@ -27,6 +35,7 @@ class Form extends Component {
 				<div className="form-group form-row">
 					<div className="col-md-9">
 						<input type="text"
+							ref="task"
 							onKeyUp={this.handleTyping.bind(this)}
 							className="form-control"
 							placeholder="type your task and press enter"

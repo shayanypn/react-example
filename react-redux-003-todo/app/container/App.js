@@ -1,11 +1,14 @@
 'use strict';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   addTodo,
   completeTodo,
   setVisibilityFilter,
-  VisibilityFilters
+  VisibilityFilters,
+  ADD_TODO,
+  COMPLETE_TODO
 } from '../actions';
 
 import Form from './../components/Form';
@@ -16,7 +19,7 @@ class App extends Component {
 	render() {
 
 		const { dispatch, visibleTodos, visibilityFilter } = this.props;
-		
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -24,9 +27,10 @@ class App extends Component {
 					<div className="col-md-6 text-center">
 						<div className="jumbotron" style={{padding:'5px',margin:0}} >
 							<Form
-								onAddTodo={ text => dispatch(addTodo(text)) }
+								onAddTodo={ text => dispatch({ type: ADD_TODO, text }) }
 								/>
 							<List
+								onTodoClick={index => dispatch({ type: COMPLETE_TODO, index })}
 								todos={visibleTodos}
 								/>
 							<Footer />

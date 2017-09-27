@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+
 class List extends Component {
+
 	render() {
-
-
-
 		return (
 			<div>
 				<div className="list-group">
 					{this.props.todos.map( (todo,index) =>{					
-						<a href="#" key={index} className="list-group-item list-group-item-action flex-column align-items-start">
+						return <a href="#"
+							key={index}
+							onClick={() => this.props.onTodoClick(index)}
+							style={{
+								textDecoration: todo.completed ? 'line-through' : 'none',
+								cursor: todo.completed ? 'default' : 'pointer'
+							}}
+							className="list-group-item list-group-item-action flex-column align-items-start"
+							>
 							<div className="d-flex w-100 justify-content-between">
 								<h5 className="mb-1">{todo.text}</h5>
 								<small>3 days ago</small>
@@ -24,7 +31,7 @@ class List extends Component {
 }
 
 List.propTypes = {
-	// onTodoClick: PropTypes.func.isRequired,
+	onTodoClick: PropTypes.func.isRequired,
 	todos: PropTypes.arrayOf(PropTypes.shape({
 		text: PropTypes.string.isRequired,
 		completed: PropTypes.bool.isRequired

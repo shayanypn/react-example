@@ -3,12 +3,10 @@ import {
   COMPLETE_TODO
 } from '../actions';
 
+
 function todos(state = [], action) {
   switch (action.type) {
     case ADD_TODO:
-
-      console.log(state);
-      
       return [
         ...state,
         {
