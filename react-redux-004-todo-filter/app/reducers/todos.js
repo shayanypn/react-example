@@ -11,6 +11,7 @@ function todos(state = [], action) {
         ...state,
         {
           text: action.text,
+          time: (new Date()).getTime(),
           completed: false
         }
       ];

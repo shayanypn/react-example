@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
+import moment from 'moment';
 
 class List extends Component {
 
@@ -20,7 +20,7 @@ class List extends Component {
 							>
 							<div className="d-flex w-100 justify-content-between">
 								<h5 className="mb-1">{todo.text}</h5>
-								<small><Moment fromNow>{todo.time}</Moment></small>
+								<small>{moment(todo.ts).fromNow()}</small>
 							</div>
 						</a>
 					})}
