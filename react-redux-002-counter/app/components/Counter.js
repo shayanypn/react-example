@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Provider, connect } from 'react-redux';
 
 class Counter extends Component {
 
+
+	onIncrease(){
+		this.props.dispatch({ type: 'INCREASE' });
+	}
+	onDecrease(){
+		this.props.dispatch({ type: 'DECREASE' });
+	}
+
 	render() {
-		const { number, onIncrease, onDecrease } = this.props
+		const { number, dispatch } = this.props;
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -13,8 +23,8 @@ class Counter extends Component {
 						<div className="jumbotron">
 							<h2>{number}</h2>
 							<div className="btn-group">
-								<button onClick={onDecrease} className="btn btn-secondary">-</button>
-								<button onClick={onIncrease} className="btn btn-secondary">+</button>
+								<button onClick={this.onDecrease.bind(this)} className="btn btn-secondary">-</button>
+								<button onClick={this.onIncrease.bind(this)} className="btn btn-secondary">+</button>
 							</div>
 						</div>
 					</div>
@@ -24,10 +34,10 @@ class Counter extends Component {
 	}
 }
 
-Counter.propTypes = {
-	number: PropTypes.number.isRequired,
-	onDecrease: PropTypes.func.isRequired,
-	onIncrease: PropTypes.func.isRequired
-};
+function getSore(state){
 
-export default Counter;
+	return {
+		number: state
+	}
+}
+export default connect(getSore)(Counter);

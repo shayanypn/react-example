@@ -11,6 +11,7 @@ const rootEl = document.getElementById('root')
 const render = () => ReactDOM.render(
   <HelloWorld
     text={store.getState()}
+    onAnotherText={()=> store.dispatch({ type: 'ONANOTHERTEXT'})}
     onText={() => store.dispatch({ type: 'ONTEXT' })}
   />,
   rootEl

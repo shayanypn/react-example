@@ -5,7 +5,17 @@ import App from './container/App';
 import configureStore from './store/configureStore';
 import './styles/app.scss';
 
-const store = configureStore();
+const store = configureStore({
+	todos:[{
+          text: 'Task 1',
+          time: (new Date()).getTime(),
+          completed: false
+        },{
+          text: 'Task 2',
+          time: (new Date()).getTime(),
+          completed: false
+        }]
+});
 
 render(
 	<Provider store={store}>

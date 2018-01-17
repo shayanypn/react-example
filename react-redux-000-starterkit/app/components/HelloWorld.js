@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 class HelloWorld extends Component {
 
 	render() {
-		const { text, onText } = this.props
+		const { text, onText, onAnotherText } = this.props
 		return (
 			<p>
 				{text}
 				{' '}
 				<button onClick={onText} className="btn btn-primary"> Change Text </button>
+				<button onClick={onAnotherText} className="btn btn-primary"> Change Another Text </button>
 			</p>
 		)
 	}
